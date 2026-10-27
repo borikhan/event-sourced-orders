@@ -6,6 +6,7 @@ COPY src ./src
 RUN npm run build
 FROM node:24-alpine
 WORKDIR /app
+COPY package.json ./
 COPY --from=build /app/dist ./dist
 USER node
 EXPOSE 8080
